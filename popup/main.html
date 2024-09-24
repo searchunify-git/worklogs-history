@@ -1,0 +1,151 @@
+<html>
+  <head>
+    <script src="../scripts/worklog-utility.js"></script>
+    <style type="text/css">
+      .worklog-ext-input {
+        width: 100%;
+        min-width:  300px;
+        height: 30px;
+        border:  1px solid #dedede;
+        box-shadow: 0px 0px 11px -10px;
+        margin-bottom: 10px;
+      }
+      
+      p {
+          font-weight: 500;
+          color: #423e3e;
+      }
+
+      textarea.worklog-ext-input {
+        min-height: 100px;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .worklog-ext-loader-icon {
+        width:30px;
+        height: 30px;
+      }
+
+      div#worklog-ext-api-response {
+          color:  green;
+          display: inline-block;
+          margin-left:  10px;
+      }
+
+      div#worklog-ext-api-response-error {
+          color: red;
+          display: inline-block;
+          margin-left: 10px;
+      }
+
+      td.calendar_cell_middle:nth-child(1),td.calendar_cell_middle:nth-child(2),td.calendar_cell_middle:nth-child(3),td.calendar_cell_middle:nth-child(4),td.calendar_cell_middle:nth-child(7) {
+        display: none;
+      }
+      
+      td.calendar_cell_middle{
+          font-size:12px;
+          border: 1px solid;
+          padding: 3px;
+      }
+      
+      table{
+          border-collapse: collapse;
+      }
+
+      table#worklog-ext-timesheet-logs th {
+          text-align: left;
+          font-size: 12px;
+          border: 1px solid #dedede;
+          padding: 5px 10px;
+      }
+      
+      table#worklog-ext-timesheet-logs td {
+          font-size: 12px;
+          border: 1px solid #dedede;
+          padding: 5px 10px;
+      }
+
+      #worklog-ext-calender-meet {
+        min-height: 100px;
+      }
+      div#worklog-jira-suggestion {
+          max-height: 250px;
+          overflow: hidden;
+      }
+      .worklog-ext-timesheet-top-nav{
+        padding: 10px;
+        background-color: #4c35b0;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+      }
+      img.worklog-ext-new-tab-icon, img.worklog-ext-clear-cache-icon{
+        height: 20px;
+      }
+
+      #clear-cache-button, #new-tab-button {
+        float: right;
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .worklog-ext-content-wrapper {
+        padding: 20px;
+      }
+      #worklog-ext-timesheet-logs{
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body style="min-width: 300px; padding: 0px; margin: 0px;">
+    <div class="worklog-ext-timesheet-top-nav">
+      Worklog Extender
+      <button id="new-tab-button"><img class="worklog-ext-new-tab-icon" src="../images/new-tab.webp" /></button>
+      <button id="clear-cache-button"><img class="worklog-ext-clear-cache-icon" src="../images/clear-cache.webp" /></button>
+    </div>
+    <div class="worklog-ext-content-wrapper">
+    <div style="text-align: center;"><img id="worklog-ext-loader-icon" class="worklog-ext-loader-icon" src="../images/loader.gif" /></div>
+    <p id="worklog-ext-timesheet-login-error" class="hidden" style="min-width: 300px; padding: 20px; color: red;">Timesheet Not Logged in, Please login to timesheet</p>
+    <div id="worklog-ext-timesheet-login-success"  class="hidden">
+      <table id="worklog-ext-timesheet-logs">
+
+      </table>
+      
+      <div>
+        <p>JIRA ID (Optional)</p>
+        <input class="worklog-ext-input" id="worklog-ext-jiraid" type="text" />
+        <div class="worklog-jira-suggestion hidden" id="worklog-jira-suggestion">
+
+        </div>
+      </div>
+      <p>Worklog Date</p>
+      <input class="worklog-ext-input" id="worklog-ext-worklog-date" type="date" >
+      <div style="display: none;">
+        <p>Client</p>
+        <select class="worklog-ext-input" id="worklog-ext-client"></select>
+        <p>Project</p>
+        <select class="worklog-ext-input" id="worklog-ext-project"></select>
+        <p>Task</p>
+        <select class="worklog-ext-input" id="worklog-ext-task"></select>
+        <p>Tag</p>
+        <select class="worklog-ext-input" id="worklog-ext-tag"></select>
+        <p><input type="radio" name="worklog-type" value="calender">Google Calender Meeting</p>
+        <select class="worklog-ext-input hidden" id="worklog-ext-calender-meet" multiple></select>
+        <p><input type="radio" name="worklog-type" value="comment" checked>Worklog Comment</p>
+        <textarea class="worklog-ext-input" id="worklog-ext-comment"></textarea>
+        <p id="time-spent-label">Time Spent (e.g 30m, 15m, 1h)</p>
+        <input class="worklog-ext-input" id="worklog-ext-time-spent" type="text" />
+        <button id="worklog-ext-btn">Submit</button>
+        <div id="worklog-ext-api-response" class="hidden">Log Saved successfully.</div>
+        <div id="worklog-ext-api-response-error" class="hidden">Error while saving log</div>
+        <div id="worklog-ext-log-response-loader" class="hidden">
+          <img id="worklog-ext-success-loader-icon" class="worklog-ext-loader-icon" src="../images/loader.gif" />
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>

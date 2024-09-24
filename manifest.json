@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Worklog Extension",
+  "description": "Extension for syncing timesheet and Jira work logs",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup/main.html",
+    "default_icon": "images/worklog-icon.png"
+  },
+  "background": {
+    "service_worker": "./scripts/background.js"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "identity"
+  ],
+  "oauth2": {
+    "client_id": "888710773445-fllu0cq4qegob9ejff9ulo5d472ob3ds.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events.readonly",
+      "https://www.googleapis.com/auth/calendar.readonly"
+    ]   
+  },
+  "host_permissions": [
+    "http://jira.grazitti.com/",
+    "https://jira.grazitti.com/",
+    "https://timesheet.grazitti.com/"
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAswXQuWhfqPmnnlIOwA70U0IvJ6/5b9JHdQ+QIGS/n5cO+yspjXqgY6Kf1OkOVyNTzfGt0VAPq6TW0XI6QQ4ZCKPA66QOQVgsa+LcohJlnyl6xZXL1dRbtnIsYH1IVrt0gXrVcICNETdgwgxf7NfId5vfVqycylZeT/ksaGRGUAylU5IyJm4xK720DXyheBdhm76aDADpOgjltXdnq7yke7vBcaMK1mputTJbm8I1PsylhfFlPUsLGBTYqGSXhVqnUfx9aEjKGqkAnRSS5p78lr7eErJ5/9wwywsz9QSIZZz3X+jxB6elmh/AUD/uusiQ/ySS6Cjx9C7n7KIKUY3YgwIDAQAB"
+}
